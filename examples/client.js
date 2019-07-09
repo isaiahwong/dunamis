@@ -14,7 +14,13 @@ class HealthService extends GrpcClient {
 }
 
 const healthService = new HealthService();
+
 healthService.check({ service: 'My Service' })
   .then((res) => {
     logger.info(res);
+  });
+
+healthService.validate({})
+  .catch((err) => {
+    logger.error(err);
   });
