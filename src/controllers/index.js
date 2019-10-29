@@ -1,17 +1,17 @@
 import logger from 'esther';
-import { BadRequest } from 'horeb';
-import { encodeArrayMetadata } from 'grpc-utils';
-import { check } from '../utils/validator';
+import { ok } from '../utils/response';
 
 const api = {};
 
-api.check = function handler(call, callback) {
-  logger.info(call.request.service);
-  callback(null, { status: 'SERVING' });
+api.check = {
+  handler(call) {
+    logger.info(call.request.service);
+    return ok({ status: 'SERVING' });
+  }
 };
 
-api.validate = function handler(call, callback) {
-  const errors = check(call.request, {
+api.validate = {
+  validate: {
     service: {
       isEmpty: {
         isTruthyError: true,
@@ -23,14 +23,11 @@ api.validate = function handler(call, callback) {
         errorMessage: 'Invalid IP'
       }
     }
-  });
-  if (errors) {
-    const err = new BadRequest('invalidParams');
-    const metadata = encodeArrayMetadata('errors', errors);
-    err.metadata = metadata;
-    return callback(err);
+  },
+  handler(call) {
+    logger.info(call.request.service);
+    return ok({ status: 'SERVING' });
   }
-  return callback(null, { status: 'SERVING' });
 };
 
 export default api;

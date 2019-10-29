@@ -1,6 +1,6 @@
-import path from 'path';
-import logger from 'esther';
-import { GrpcClient } from 'grpc-utils';
+const path = require('path');
+const logger = require('esther');
+const { GrpcClient } = require('grpc-utils');
 
 class HealthService extends GrpcClient {
   constructor() {
