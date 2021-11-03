@@ -22,7 +22,7 @@
     "grpc-utils": "^1.0.15",
     "horeb": "^1.1.2",
     "lodash": "^4.17.15",
-    "validator": "^11.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
