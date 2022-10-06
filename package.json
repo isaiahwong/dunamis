@@ -45,6 +45,6 @@
     "eslint-plugin-promise": "^3.7.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.7",
-    "snyk": "^1.134.2"
+    "snyk": "^1.996.0"
   }
 }
